@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml"
+    xmlns:th="https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+    <!-- версия для разработки, отображает полезные предупреждения в консоли -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+</head>
+<body>
+
+<div id="app">
+    <h4>Hello, {{message}}</h4>
+</div>
+
+<div id="app-2">
+  <span v-bind:title="message">
+    Наведи на меня курсор на пару секунд,
+    чтобы увидеть динамически связанное значение title!
+  </span>
+</div>
+
+
+<form ng-submit="submitEmployee()">
+    <table border="0">
+        <tr>
+            <td>User Id</td>
+            <td>{{UserInformationForm.userId}}</td>
+        </tr>
+        <tr>
+            <td>Emp No</td>
+            <td><input type="text" ng-model="employeeForm.empNo" /></td>
+        </tr>
+        <tr>
+            <td>Emp Name</td>
+            <td><input type="text" ng-model="employeeForm.empName"  /></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Submit" class="blue-button" />
+            </td>
+        </tr>
+    </table>
+</form>
+<br/>
+<a class="create-button" ng-click="createEmployee()">Create Employee</a>
+<table border="1">
+    <tr>
+        <th>Emp Id</th>
+        <th>Emp No</th>
+        <th>Emp Name</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <!-- $scope.employees -->
+    <tr ng-repeat="employee in employees">
+        <td> {{ employee.empId }} </td>
+        <td> {{ employee.empNo }} </td>
+        <td> {{ employee.empName }} </td>
+        <td>
+            <a ng-click="editEmployee(employee)" class="edit-button">Edit</a>
+        </td>
+        <td>
+            <a ng-click="deleteEmployee(employee)" class="delete-button">Delete</a>
+        </td>
+    </tr>
+</table>
+
+<script src="/static/js/main.js"></script>
+</body>
+</html>
